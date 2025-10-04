@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Online Books Shop 📚</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/main.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <div class="brand">
+        <span class="logo" aria-hidden="true">📚</span>
+        <h1 class="title">Online Books Shop</h1>
+      </div>
+      <div class="header-actions">
+        <div class="search">
+          <label class="sr-only" for="searchInput">Search books</label>
+          <input id="searchInput" type="search" placeholder="Search by title, author, or tag…" autocomplete="off" />
+        </div>
+        <button id="cartButton" class="cart-button" aria-haspopup="dialog" aria-controls="cartDrawer" aria-expanded="false">
+          <span class="icon" aria-hidden="true">🛒</span>
+          <span class="count" id="cartCount">0</span>
+          <span class="sr-only">Open cart</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main">
+    <aside class="filters" aria-label="Filters">
+      <section>
+        <h2>Categories</h2>
+        <div id="categoryFilters" class="pill-group" role="group" aria-label="Categories"></div>
+      </section>
+      <section>
+        <h2>Price</h2>
+        <div class="price-range">
+          <input type="range" id="priceRange" min="0" max="100" step="1" />
+          <div class="range-labels">
+            <span>Min</span>
+            <span id="priceRangeValue">$100</span>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Sort by</h2>
+        <select id="sortSelect" aria-label="Sort books">
+          <option value="relevance">Relevance</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="rating-desc">Rating: High to Low</option>
+          <option value="newest">Newest</option>
+        </select>
+      </section>
+    </aside>
+
+    <section class="catalog" aria-live="polite">
+      <div id="resultsMeta" class="results-meta">Loading…</div>
+      <div id="bookGrid" class="grid"></div>
+    </section>
+  </main>
+
+  <dialog id="productModal" class="modal" aria-label="Book details">
+    <article id="modalContent"></article>
+    <form method="dialog">
+      <button class="close" aria-label="Close">Close</button>
+    </form>
+  </dialog>
+
+  <dialog id="cartDrawer" class="cart" aria-label="Shopping cart">
+    <header>
+      <h2>Your Cart</h2>
+      <form method="dialog">
+        <button class="close" aria-label="Close cart">Close</button>
+      </form>
+    </header>
+    <div id="cartItems" class="cart-items"></div>
+    <footer class="cart-footer">
+      <div class="totals">
+        <span>Subtotal</span>
+        <strong id="cartSubtotal">$0.00</strong>
+      </div>
+      <button id="checkoutButton" class="checkout">Checkout</button>
+    </footer>
+  </dialog>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Online Books Shop. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/scripts/data.js"></script>
+  <script src="/scripts/app.js" type="module"></script>
+</body>
+</html>
